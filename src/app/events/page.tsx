@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useSession, signIn } from "next-auth/react";
 
 type Event = {
   title: string;
@@ -12,6 +13,7 @@ type Event = {
 const FILTERS = ["All", "Services", "Outreach", "Fellowship"] as const;
 
 export default function EventsPage() {
+  const { data: session, status } = useSession();
   const [events, setEvents] = useState<Event[]>([]);
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -53,6 +55,27 @@ export default function EventsPage() {
       .then((res) => res.json())
       .then((data) => setEvents(data));
   };
+
+  // Delete event handler
+  const handleDelete = async (event: Event) => {
+    if (!window.confirm("Are you sure you want to delete this event?")) return;
+    const query = `title=${encodeURIComponent(event.title)}&date=${encodeURIComponent(event.date)}&type=${encodeURIComponent(event.type)}`;
+    await fetch(`https://sheetdb.io/api/v1/by7pswvwuo12q/search?${query}`, {
+      method: "DELETE",
+    });
+    // Refetch events after delete
+    fetch("https://sheetdb.io/api/v1/by7pswvwuo12q")
+      .then((res) => res.json())
+      .then((data) => setEvents(data));
+  };
+
+  if (status === "loading") {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-10 text-center text-blue-700">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
@@ -108,9 +131,21 @@ export default function EventsPage() {
                   {event.type}
                 </span>
               </div>
-              <button className="mt-4 sm:mt-0 bg-gradient-to-r from-blue-700 to-blue-500 hover:from-blue-800 hover:to-blue-600 text-white px-6 py-2 rounded-full font-bold shadow transition-all">
-                View Details
-              </button>
+              {session && (
+                <div className="flex flex-col gap-2 mt-4 sm:mt-0">
+                  <button className="bg-gradient-to-r from-blue-700 to-blue-500 hover:from-blue-800 hover:to-blue-600 text-white px-6 py-2 rounded-full font-bold shadow transition-all">
+                    View Details
+                  </button>
+                  {session && (
+                    <button
+                      onClick={() => handleDelete(event)}
+                      className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-bold shadow transition-all"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -169,49 +204,62 @@ export default function EventsPage() {
         )}
       </section>
       <section className="text-center mt-10">
-        <button
-          className="bg-gradient-to-r from-green-600 to-green-400 hover:from-green-700 hover:to-green-500 text-white px-8 py-3 rounded-full shadow-lg font-extrabold text-lg transition-all"
-          onClick={() => setShowForm((v) => !v)}
-        >
-          {showForm ? "Cancel" : "Submit Your Event"}
-        </button>
-        {showForm && (
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto flex flex-col gap-4 border border-blue-100"
-          >
-            <input
-              type="text"
-              required
-              placeholder="Event Title"
-              className="border px-4 py-2 rounded"
-              value={form.title}
-              onChange={(e) => setForm({ ...form, title: e.target.value })}
-            />
-            <input
-              type="datetime-local"
-              required
-              className="border px-4 py-2 rounded"
-              value={form.date}
-              onChange={(e) => setForm({ ...form, date: e.target.value })}
-            />
-            <select
-              className="border px-4 py-2 rounded"
-              value={form.type}
-              onChange={(e) => setForm({ ...form, type: e.target.value })}
-            >
-              <option value="Services">Services</option>
-              <option value="Outreach">Outreach</option>
-              <option value="Fellowship">Fellowship</option>
-            </select>
+        {session ? (
+          <>
             <button
-              type="submit"
-              disabled={submitting}
-              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-full font-bold shadow transition"
+              className="bg-gradient-to-r from-green-600 to-green-400 hover:from-green-700 hover:to-green-500 text-white px-8 py-3 rounded-full shadow-lg font-extrabold text-lg transition-all"
+              onClick={() => setShowForm((v) => !v)}
             >
-              {submitting ? "Submitting..." : "Add Event"}
+              {showForm ? "Cancel" : "Submit Your Event"}
             </button>
-          </form>
+            {showForm && (
+              <form
+                onSubmit={handleSubmit}
+                className="mt-8 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto flex flex-col gap-4 border border-blue-100"
+              >
+                <input
+                  type="text"
+                  required
+                  placeholder="Event Title"
+                  className="border px-4 py-2 rounded"
+                  value={form.title}
+                  onChange={(e) => setForm({ ...form, title: e.target.value })}
+                />
+                <input
+                  type="datetime-local"
+                  required
+                  className="border px-4 py-2 rounded"
+                  value={form.date}
+                  onChange={(e) => setForm({ ...form, date: e.target.value })}
+                />
+                <select
+                  className="border px-4 py-2 rounded"
+                  value={form.type}
+                  onChange={(e) => setForm({ ...form, type: e.target.value })}
+                >
+                  <option value="Services">Services</option>
+                  <option value="Outreach">Outreach</option>
+                  <option value="Fellowship">Fellowship</option>
+                </select>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-full font-bold shadow transition"
+                >
+                  {submitting ? "Submitting..." : "Add Event"}
+                </button>
+              </form>
+            )}
+          </>
+        ) : (
+          <div className="text-blue-700 font-semibold text-lg mt-8">
+            <button
+              onClick={() => signIn()}
+              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full font-bold shadow transition"
+            >
+              Sign in to submit or delete events
+            </button>
+          </div>
         )}
       </section>
       <style jsx global>{`
