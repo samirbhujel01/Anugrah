@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientBody from "./ClientBody";
+import React, { useEffect, useRef, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,69 +13,100 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Anugrah Church",
-  description: "Modern, welcoming church site for services, events, and community.",
-};
+interface ClientBodyProps {
+  dark: boolean;
+  setDark: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function ClientBody({ dark, setDark }: ClientBodyProps) {
+  return (
+    <div>
+      {/* Add your component logic here */}
+    </div>
+  );
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fullText = "Anugrah Church";
+  const [typed, setTyped] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+  const idx = useRef(0);
+
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    setTyped("");
+    idx.current = 0;
+    setShowCursor(true);
+    const typing = setInterval(() => {
+      setTyped((prev) => {
+        if (idx.current < fullText.length) {
+          idx.current += 1;
+          return fullText.slice(0, idx.current);
+        } else {
+          clearInterval(typing);
+          setTimeout(() => setShowCursor(false), 1200);
+          return prev;
+        }
+      });
+    }, 90);
+    return () => clearInterval(typing);
+  }, []);
+
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [dark]);
+
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body suppressHydrationWarning className="antialiased">
-        <header className="w-full px-8 py-4 bg-blue-900 text-white shadow-md sticky top-0 z-40">
-          <nav className="flex items-center justify-between max-w-6xl mx-auto">
-            <a href="/" className="flex items-center gap-3 font-bold text-2xl tracking-tight">
-              <img src="/logo.png" alt="Anugrah Church Logo" className="h-12 w-12 object-contain" />
-              <span>Anugrah Church</span>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dark ? "dark" : ""}`}>
+      <body suppressHydrationWarning className="antialiased bg-white dark:bg-blue-950 dark:text-blue-100 transition-colors duration-300">
+        {/* Sleek, non-floating navbar */}
+        <header className="w-full bg-white/95 dark:bg-blue-950/95 border-b border-blue-100 dark:border-blue-900 shadow-md backdrop-blur-md">
+          <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+            <a href="/" className="flex items-center gap-3 font-bold text-2xl tracking-tight group">
+              <div className="h-14 w-14 md:h-16 md:w-16 flex items-center justify-center rounded-full border-4 border-blue-200 dark:border-blue-900 bg-white dark:bg-blue-900 shadow-inner overflow-hidden group-hover:scale-105 transition">
+                <img
+                  src="/logo.png"
+                  alt="Anugrah Church Logo"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <span className="hidden sm:inline font-mono text-blue-900 dark:text-blue-100 drop-shadow-sm">
+                {typed}
+                <span className={`inline-block w-2 ${showCursor ? "animate-pulse" : "opacity-0"}`}>|</span>
+              </span>
             </a>
-            <ul className="flex gap-6 text-base font-medium">
+            <ul className="flex flex-wrap gap-2 sm:gap-4 md:gap-6 text-base font-medium items-center justify-end flex-1">
+              <li><a href="/about" className="px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 transition font-semibold text-blue-900 dark:text-blue-100">About</a></li>
+              <li><a href="/services" className="px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 transition font-semibold text-blue-900 dark:text-blue-100">Services</a></li>
+              <li><a href="/events" className="px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 transition font-semibold text-blue-900 dark:text-blue-100">Events</a></li>
+              <li><a href="/resources" className="px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 transition font-semibold text-blue-900 dark:text-blue-100">Resources</a></li>
+              <li><a href="/media" className="px-3 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 transition font-semibold text-blue-900 dark:text-blue-100">Media</a></li>
               <li>
-                <a href="/about">About</a>
-              </li>
-              <li>
-                <a href="/services">Services</a>
-              </li>
-              <li>
-                <a href="/events">Events</a>
-              </li>
-              <li>
-                <a href="/resources">Resources</a>
-              </li>
-              <li>
-                <a href="/media">Media</a>
-              </li>
-              <li>
-                <a href="/prayer-requests">Prayer Requests</a>
-              </li>
-              <li>
-                <a href="/contact">Contact</a>
+                <button
+                  aria-label="Toggle dark mode"
+                  onClick={() => setDark((d) => !d)}
+                  className="ml-2 px-3 py-2 rounded-full border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900 text-blue-900 dark:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800 transition"
+                  type="button"
+                >
+                  {dark ? "🌙" : "☀️"}
+                </button>
               </li>
             </ul>
           </nav>
         </header>
         <main className="min-h-[80vh] max-w-6xl mx-auto w-full px-4 py-8">
-          <ClientBody>{children}</ClientBody>
+          {children}
         </main>
-        <footer className="w-full bg-blue-950 text-blue-100 py-6 mt-10">
-          <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
-            <div>&copy; {new Date().getFullYear()} Anugrah Church. All rights reserved.</div>
-            <div>
-              <a href="mailto:info@anugrahchurch.org" className="underline mr-3">
-                info@anugrahchurch.org
-              </a>
-              <a href="https://facebook.com" className="mr-2" aria-label="Facebook">
-                FB
-              </a>
-              <a href="https://instagram.com" aria-label="Instagram">
-                IG
-              </a>
-            </div>
-          </div>
-        </footer>
+        <ClientBody dark={dark} setDark={setDark} />
       </body>
     </html>
   );
