@@ -4,7 +4,7 @@ export default function MediaPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h1 className="text-4xl font-extrabold mb-8 text-blue-900 text-center tracking-tight drop-shadow">
-        Sermons & Media
+      Media
       </h1>
 
       {/* Filters */}
