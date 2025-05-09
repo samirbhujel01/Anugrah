@@ -1,34 +1,155 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+
+const ChurchMap = dynamic(() => import("./ChurchMap"), { ssr: false });
+
+type Event = {
+  title: string;
+  date: string; // ISO string
+  type: string;
+};
 
 export default function ServicesPage() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  useEffect(() => {
+    fetch("https://sheetdb.io/api/v1/by7pswvwuo12q")
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch(() => setEvents([]));
+  }, []);
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">Services</h1>
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Service Times & Location</h2>
-        <ul className="mb-2 text-lg">
-          <li>Sundays: 10:00 AM Worship Service</li>
-          <li>Wednesdays: 7:00 PM Prayer & Bible Study</li>
-        </ul>
-        <div className="mb-2">123 Main St, City, State (Map Below)</div>
-        <div className="w-full h-64 bg-blue-100 flex items-center justify-center text-blue-400 rounded">Google Map Placeholder</div>
+    <div className="max-w-3xl mx-auto px-4 py-10">
+      <h1 className="text-4xl font-extrabold mb-8 text-blue-900 text-center tracking-tight drop-shadow">
+        Services
+      </h1>
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4 text-blue-800">Service Times & Location</h2>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl shadow p-6 mb-4">
+          <ul className="mb-4 text-lg space-y-2">
+            <li>
+              <span className="font-semibold text-blue-900">Sundays:</span>{" "}
+              <span className="text-blue-700">2:00 PM Worship Service</span>
+            </li>
+            <li>
+              <span className="font-semibold text-blue-900">Youth Fellowship:</span>{" "}
+              <span className="text-blue-700">1:00 PM every other Saturday at church</span>
+            </li>
+          </ul>
+          <div className="mb-4 text-blue-900">
+            <span className="font-semibold">Location:</span>{" "}
+            91 Upper Church St, West Springfield, MA 01085
+          </div>
+          <div className="w-full h-64 bg-blue-100 rounded-xl mt-4 shadow-inner overflow-hidden">
+            <ChurchMap />
+          </div>
+        </div>
       </section>
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Join Online</h2>
-        <div className="w-full h-56 bg-blue-100 flex items-center justify-center text-blue-400 rounded mb-2">Live Stream/Sermon Video Placeholder</div>
-        <a href="/media" className="text-blue-700 underline">View Past Sermons</a>
-      </section>
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Upcoming Sermon Series</h2>
-        <div className="bg-white border rounded shadow p-4">
-          <div className="font-bold">Faith in Action</div>
-          <div className="text-gray-600">Exploring practical expressions of faith in everyday life. May 2025 Series.</div>
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-4 text-blue-800">Upcoming Sermon Series</h2>
+        <div className="bg-white border border-blue-100 rounded-xl shadow p-6">
+          <div className="font-bold text-blue-900 text-lg mb-1">Faith in Action</div>
+          <div className="text-gray-600">
+            Exploring practical expressions of faith in everyday life. May 2025 Series.
+          </div>
         </div>
       </section>
       <section>
-        <h2 className="text-2xl font-semibold mb-2">Services Calendar</h2>
-        <div className="w-full h-32 bg-blue-50 flex items-center justify-center text-blue-400 rounded">Service Calendar Placeholder</div>
+        <h2 className="text-2xl font-bold mb-4 text-blue-800">Services Calendar</h2>
+        <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-lg bg-blue-50 p-4">
+          <Calendar
+            onChange={(date) => setSelectedDate(date as Date)}
+            value={selectedDate}
+            tileContent={({ date }) => {
+              if (
+                events.some((event) => {
+                  const d = new Date(event.date);
+                  return (
+                    d.getFullYear() === date.getFullYear() &&
+                    d.getMonth() === date.getMonth() &&
+                    d.getDate() === date.getDate()
+                  );
+                })
+              ) {
+                return (
+                  <span className="block w-2 h-2 bg-blue-600 rounded-full mx-auto mt-1"></span>
+                );
+              }
+              return null;
+            }}
+            tileClassName={({ date }) =>
+              events.some((event) => {
+                const d = new Date(event.date);
+                return (
+                  d.getFullYear() === date.getFullYear() &&
+                  d.getMonth() === date.getMonth() &&
+                  d.getDate() === date.getDate()
+                );
+              })
+                ? "react-calendar__tile--hasActiveEvent"
+                : undefined
+            }
+          />
+        </div>
+        {selectedDate && (
+          <div className="mt-6 text-center text-blue-700 font-semibold text-lg">
+            {events
+              .filter((event) => {
+                const d = new Date(event.date);
+                return (
+                  d.getFullYear() === selectedDate.getFullYear() &&
+                  d.getMonth() === selectedDate.getMonth() &&
+                  d.getDate() === selectedDate.getDate()
+                );
+              })
+              .map((event, idx) => (
+                <div key={idx} className="mb-2">
+                  <span className="font-bold">{event.title}</span>{" "}
+                  <span className="text-gray-600">
+                    ({new Date(event.date).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })})
+                  </span>
+                  <span className="ml-2 px-2 py-1 text-xs rounded bg-blue-100 text-blue-700">{event.type}</span>
+                </div>
+              ))}
+            {events.filter((event) => {
+              const d = new Date(event.date);
+              return (
+                d.getFullYear() === selectedDate.getFullYear() &&
+                d.getMonth() === selectedDate.getMonth() &&
+                d.getDate() === selectedDate.getDate()
+              );
+            }).length === 0 && (
+              <span className="text-blue-400">No events for this day.</span>
+            )}
+          </div>
+        )}
       </section>
+      <style jsx global>{`
+        .react-calendar {
+          border: none;
+          font-family: inherit;
+          background: transparent;
+        }
+        .react-calendar__tile--hasActiveEvent {
+          background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%) !important;
+          color: #fff !important;
+          border-radius: 0.75rem;
+        }
+        .react-calendar__tile--active {
+          background: #2563eb !important;
+          color: #fff !important;
+        }
+        .react-calendar__tile:enabled:hover,
+        .react-calendar__tile:enabled:focus {
+          background: #dbeafe !important;
+          color: #1e40af !important;
+        }
+      `}</style>
     </div>
   );
 }

@@ -9,26 +9,24 @@ export default function AboutPage() {
       <section className="mb-10 text-center">
         <h2 className="text-2xl font-bold mb-3 text-blue-800">Our Mission & Vision</h2>
         <p className="text-lg mb-2 text-gray-700">
-          To be a welcoming community, rooted in faith, spreading hope and love.
+          We are a welcoming Nepali community rooted in faith, offering hope and love to those who have immigrated to the United States and are seeking a place to connect with God and each other.
         </p>
         <p className="text-base text-blue-600">
-          Vision: Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.”
-
-
+          Vision: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.” - Matthew 28:19-20
         </p>
       </section>
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-3 text-blue-800">Our History</h2>
         <p className="text-base text-gray-700">
-          Founded in <span className="font-semibold text-blue-700">[2018]</span>, Anugrah Church has served the community with compassion, worship, and outreach programs for generations.
+          Founded in <span className="font-semibold text-blue-700">[2018]</span>, Anugrah Church has been a place of worship and community for Nepali immigrants in the Western Massachusetts area. We strive to meet the spiritual needs of our community and support each other through the challenges of life in a new country.
         </p>
       </section>
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-3 text-blue-800">Core Beliefs</h2>
         <ul className="list-disc ml-8 text-gray-700 space-y-1">
           <li>Biblical teaching and spiritual growth</li>
-          <li>Community service and outreach</li>
-          <li>Worship, prayer, and fellowship</li>
+          <li>Serving our community and supporting our brothers and sisters</li>
+          <li>Worship, prayer, and fellowship in the Nepali context</li>
         </ul>
       </section>
       <section className="mb-12">
