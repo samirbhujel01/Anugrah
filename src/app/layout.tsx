@@ -38,6 +38,11 @@ export default function RootLayout({
   const idx = useRef(0);
 
   const [dark, setDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setTyped("");
@@ -66,12 +71,21 @@ export default function RootLayout({
     }
   }, [dark]);
 
+  // Prevent hydration mismatch by not rendering until mounted
+if (!mounted) {
+  return (
+    <html>
+      <body />
+    </html>
+  );
+}
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dark ? "dark" : ""}`}>
-      <body suppressHydrationWarning className="antialiased bg-white text-blue-950 dark:bg-[#0a101a] dark:text-blue-50 transition-colors duration-300">
+      <body className="antialiased bg-background text-foreground dark:text-white transition-colors duration-300">
         <SessionProvider>
           {/* Responsive Navbar */}
-          <header className="w-full bg-white/95 dark:bg-[#101624]/95 border-b border-blue-100 dark:border-[#222b3a] shadow-md backdrop-blur-md">
+          <header className="w-full bg-[hsl(40,80%,95%)] dark:bg-[hsl(30,30%,15%)]/80 border-b border-blue-100 dark:border-[#222b3a] shadow-md backdrop-blur-md backdrop-saturate-150">
             <nav className="max-w-6xl mx-auto flex flex-wrap items-center justify-between px-2 sm:px-4 py-2 sm:py-3">
               {/* Logo and animated text */}
               <a href="/" className="flex items-center gap-2 sm:gap-3 font-bold text-xl sm:text-2xl tracking-tight group">
@@ -152,7 +166,7 @@ export default function RootLayout({
               </ul>
             </nav>
             {/* Mobile bottom nav */}
-            <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#101624]/95 border-t border-blue-100 dark:border-[#222b3a] shadow-inner flex sm:hidden">
+            <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[hsl(40,80%,95%)]/90 dark:bg-[hsl(30,30%,15%)]/80 border-t border-blue-100 dark:border-[#222b3a] shadow-inner flex sm:hidden backdrop-blur-md backdrop-saturate-150">
               <ul className="flex flex-row justify-between w-full px-2 py-1">
                 <li>
                   <a href="/" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
@@ -198,6 +212,25 @@ export default function RootLayout({
                     <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 13V7a2 2 0 00-2-2H7a2 2 0 00-2 2v6m14 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" /></svg>
                     <span className="text-xs">News</span>
                   </a>
+                </li>
+                <li>
+                  <button
+                    aria-label="Toggle dark mode"
+                    onClick={() => setDark((d) => !d)}
+                    className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100"
+                    type="button"
+                  >
+                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      {dark ? (
+                        // Moon icon for dark mode
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                      ) : (
+                        // Sun icon for light mode
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-8.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.95 7.07l-.71-.71M4.05 4.93l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z" />
+                      )}
+                    </svg>
+                    <span className="text-xs">{dark ? "Dark" : "Light"}</span>
+                  </button>
                 </li>
               </ul>
             </nav>

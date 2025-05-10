@@ -85,29 +85,27 @@ export default function AnnouncementsPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-4xl font-extrabold mb-6 text-blue-900 text-center tracking-tight drop-shadow">
+      <h1 className="text-4xl font-extrabold mb-6 text-blue-900 dark:text-white text-center tracking-tight drop-shadow">
         Announcements & Schedules
       </h1>
 
       {/* Announcements List at the Top */}
       <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800 text-center">Latest Announcement</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blue-800 dark:text-blue-100 text-center">Latest Announcement</h2>
         <div className="space-y-6">
-          {loading && <div className="text-center text-blue-400">Loading...</div>}
+          {loading && <div className="text-center text-blue-400 dark:text-blue-300">Loading...</div>}
           {announcements.length === 0 && !loading && (
-            <div className="text-center text-blue-400">No announcements yet.</div>
+            <div className="text-center text-blue-400 dark:text-blue-300">No announcements yet.</div>
           )}
           {announcements[0] && (
-            <div
-              className="bg-blue-50 dark:bg-blue-900 border border-blue-100 dark:border-blue-800 rounded-xl p-6 shadow"
-            >
+            <div className="bg-blue-50 dark:bg-blue-900 border border-blue-100 dark:border-blue-800 rounded-xl p-6 shadow">
               <div className="flex flex-wrap gap-4 justify-between mb-2">
                 <span className="font-bold text-blue-800 dark:text-blue-100">{announcements[0].date}</span>
                 <span className="font-semibold text-blue-700 dark:text-blue-200">Sunday Lead: {announcements[0].sunday_lead}</span>
                 <span className="font-semibold text-blue-700 dark:text-blue-200">Sunday Message: {announcements[0].sunday_message}</span>
               </div>
               {(announcements[0].cottage_lead || announcements[0].cottage_message || announcements[0].cottage_address) && (
-                <div className="mb-1">
+                <div className="mb-1 text-blue-900 dark:text-white">
                   <span className="font-semibold">Cottage Meeting: </span>
                   <span>
                     {announcements[0].cottage_lead && `Lead: ${announcements[0].cottage_lead}; `}
@@ -117,7 +115,7 @@ export default function AnnouncementsPage() {
                 </div>
               )}
               {announcements[0].additional && (
-                <div>
+                <div className="text-blue-900 dark:text-white">
                   <span className="font-semibold">Additional: </span>
                   <span>{announcements[0].additional}</span>
                 </div>
@@ -133,7 +131,7 @@ export default function AnnouncementsPage() {
           onSubmit={handleSubmit}
           className="bg-white dark:bg-blue-950 border border-blue-100 dark:border-blue-900 rounded-2xl shadow-lg p-8 flex flex-col gap-4"
         >
-          <h2 className="text-xl font-bold mb-2 text-blue-800 text-center">Post a New Announcement</h2>
+          <h2 className="text-xl font-bold mb-2 text-blue-800 dark:text-blue-100 text-center">Post a New Announcement</h2>
           <div className="flex flex-col gap-2">
             <label className="font-semibold">Date</label>
             <input

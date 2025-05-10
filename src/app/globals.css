@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 45 77% 95%; /* light mode */
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -32,8 +32,8 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%; /* dark mode */
+    --foreground: 0 0% 100%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
@@ -73,11 +73,14 @@
   nav ul {
     transition: max-height 0.3s;
     position: relative !important;
-    background: rgba(255,255,255,0.97); /* or your dark color for dark mode */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    background: rgba(255, 255, 255, 0.97); /* or use dark color for dark mode */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
     z-index: 50;
   }
+  .dark nav ul {
+    background: rgba(16, 22, 36, 0.97); /* matches your dark navbar */
+  }
   main {
-    margin-top: 3.5rem; /* Adjust to match your header height */
+    margin-top: 0; /* or remove this rule entirely */
   }
 }

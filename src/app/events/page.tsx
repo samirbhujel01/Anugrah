@@ -105,7 +105,7 @@ export default function EventsPage() {
           {filteredEvents.map((event, idx) => (
             <li
               key={event.title + idx}
-              className="bg-white/80 backdrop-blur border border-blue-100 rounded-xl px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between shadow-md hover:shadow-lg transition-shadow"
+              className="bg-white/80 dark:bg-[#181f2e]/80 backdrop-blur border border-blue-100 rounded-xl px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between shadow-md hover:shadow-lg transition-shadow"
             >
               <div>
                 <div className="font-bold text-lg text-blue-900">{event.title}</div>
@@ -152,7 +152,7 @@ export default function EventsPage() {
       </section>
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-4 text-blue-700 text-center">Events Calendar</h2>
-        <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-lg bg-white/70 p-4">
+        <div className="w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-lg bg-white/70 dark:bg-[#181f2e]/80 p-4">
           <Calendar
             onChange={(date) => setSelectedDate(date as Date)}
             value={selectedDate}
@@ -215,7 +215,7 @@ export default function EventsPage() {
             {showForm && (
               <form
                 onSubmit={handleSubmit}
-                className="mt-8 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto flex flex-col gap-4 border border-blue-100"
+                className="mt-8 bg-white dark:bg-[#181f2e] rounded-xl shadow-lg p-6 max-w-md mx-auto flex flex-col gap-4 border border-blue-100"
               >
                 <input
                   type="text"
