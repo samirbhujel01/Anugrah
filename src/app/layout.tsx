@@ -96,56 +96,39 @@ export default function RootLayout({
               <ul className="hidden sm:flex flex-row gap-4 md:gap-6 text-base font-medium items-center justify-end flex-1">
                 <li>
                   <a href="/about" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* About Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">About</span>
+
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                    <span>About</span>
                   </a>
                 </li>
                 <li>
                   <a href="/services" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* Services Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 7v4a1 1 0 001 1h3v2a1 1 0 001 1h4a1 1 0 001-1v-2h3a1 1 0 001-1V7a1 1 0 00-1-1H4a1 1 0 00-1 1z" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">Services</span>
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 7v4a1 1 0 001 1h3v2a1 1 0 001 1h4a1 1 0 001-1v-2h3a1 1 0 001-1V7a1 1 0 00-1-1H4a1 1 0 00-1 1z" /></svg>
+                    <span>Services</span>
                   </a>
                 </li>
                 <li>
                   <a href="/events" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* Events Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">Events</span>
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <span>Events</span>
                   </a>
                 </li>
                 <li>
                   <a href="/resources" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* Resources Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3m9 0a9 9 0 100-18 9 9 0 000 18z" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">Resources</span>
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3m9 0a9 9 0 100-18 9 9 0 000 18z" /></svg>
+                    <span>Resources</span>
                   </a>
                 </li>
                 <li>
                   <a href="/media" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* Media Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553 2.276A2 2 0 0121 14.118V17a2 2 0 01-2 2H5a2 2 0 01-2-2v-2.882a2 2 0 01.447-1.842L8 10m7 0V7a5 5 0 00-10 0v3m10 0a5 5 0 00-10 0" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">Media</span>
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553 2.276A2 2 0 0121 14.118V17a2 2 0 01-2 2H5a2 2 0 01-2-2v-2.882a2 2 0 01.447-1.842L8 10m7 0V7a5 5 0 00-10 0v3m10 0a5 5 0 00-10 0" /></svg>
+                    <span>Media</span>
                   </a>
                 </li>
                 <li>
                   <a href="/announcements" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
-                    <span className="sm:hidden">
-                      {/* Announcements Icon */}
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 13V7a2 2 0 00-2-2H7a2 2 0 00-2 2v6m14 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" /></svg>
-                    </span>
-                    <span className="hidden sm:inline">Announcements</span>
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 13V7a2 2 0 00-2-2H7a2 2 0 00-2 2v6m14 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" /></svg>
+                    <span>Announcements</span>
                   </a>
                 </li>
                 <li>
@@ -219,7 +202,7 @@ export default function RootLayout({
               </ul>
             </nav>
           </header>
-          <main className="min-h-[80vh] max-w-6xl mx-auto w-full px-2 sm:px-4 py-6 sm:py-8">
+          <main className="min-h-[80vh] max-w-6xl mx-auto w-full px-2 sm:px-4 py-6 sm:py-8 pb-20 sm:pb-0">
             {children}
           </main>
           <ClientBody dark={dark} setDark={setDark} />
