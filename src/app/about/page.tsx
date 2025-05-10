@@ -11,14 +11,15 @@ export default function AboutPage() {
         <p className="text-lg mb-2 text-gray-700">
           We are a welcoming Nepali community rooted in faith, offering hope and love to those who have immigrated to the United States and are seeking a place to connect with God and each other.
         </p>
-        <p className="text-base text-blue-600">
-          Vision: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.” - Matthew 28:19-20
+        <p className="text-base text-blue-600 italic">
+          “Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.” <br />
+          <span className="not-italic font-medium">- Matthew 28:19-20</span>
         </p>
       </section>
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-3 text-blue-800">Our History</h2>
         <p className="text-base text-gray-700">
-          Founded in <span className="font-semibold text-blue-700">[2018]</span>, Anugrah Church has been a place of worship and community for Nepali immigrants in the Western Massachusetts area. We strive to meet the spiritual needs of our community and support each other through the challenges of life in a new country.
+          Founded in <span className="font-semibold text-blue-700">2018</span>, Anugrah Church has been a place of worship and community for Nepali immigrants in the Western Massachusetts area. We strive to meet the spiritual needs of our community and support each other through the challenges of life in a new country.
         </p>
       </section>
       <section className="mb-10">
@@ -30,9 +31,9 @@ export default function AboutPage() {
         </ul>
       </section>
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center">Leadership & Team</h2>
+        <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center">Leadership &amp; Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-4">
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100">
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
             <img
               src="/uploads/pastor.jpeg"
               alt="Pastor"
@@ -41,7 +42,7 @@ export default function AboutPage() {
             <div className="font-semibold text-blue-900">Prem Giri</div>
             <div className="text-xs text-blue-700">Lead Pastor</div>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100">
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
             <img
               src="/uploads/img_4797.jpeg"
               alt="Associate"
@@ -50,14 +51,14 @@ export default function AboutPage() {
             <div className="font-semibold text-blue-900">Tula Shankhar</div>
             <div className="text-xs text-blue-700">Elder</div>
           </div>
-          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100">
+          <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
             <img
               src="/uploads/worshiper.jpeg"
               alt="Youth Director"
               className="w-20 h-20 object-cover rounded-full mb-3 border-4 border-blue-200 shadow"
             />
             <div className="font-semibold text-blue-900">Milan Oji</div>
-            <div className="text-xs text-blue-700"> Worship Leader</div>
+            <div className="text-xs text-blue-700">Worship Leader</div>
           </div>
         </div>
       </section>
