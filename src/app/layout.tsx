@@ -71,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dark ? "dark" : ""}`}>
       <body className="antialiased bg-background text-foreground transition-colors duration-300">
         <SessionProvider>
-          {/* Navbar */}
           <header className="w-full border-b border-blue-100 dark:border-[#222b3a] shadow-md py-4 bg-[hsl(40,80%,95%)] dark:bg-black/80">
             <div className="flex flex-col items-center max-w-6xl mx-auto w-full">
               {/* Logo */}
