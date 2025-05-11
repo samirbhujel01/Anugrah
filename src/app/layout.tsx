@@ -103,7 +103,7 @@ if (!mounted) {
                 <span className={`inline-block w-2 ${showCursor ? "animate-pulse" : "opacity-0"}`}>|</span>
               </span>
               {/* Navigation Links */}
-              <nav className="w-full mt-4">
+              <nav className="w-full mt-4 bg-[hsl(40,80%,95%)] dark:bg-black/80">
                 <ul className="flex flex-wrap justify-center gap-2 md:gap-6 text-base font-medium items-center">
                   <li>
                     <a
