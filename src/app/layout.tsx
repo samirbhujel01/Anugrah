@@ -101,13 +101,7 @@ if (!mounted) {
                   <span className={`inline-block w-2 ${showCursor ? "animate-pulse" : "opacity-0"}`}>|</span>
                 </span>
               </a>
-              <input type="checkbox" id="nav-toggle" className="peer hidden" />
-              <label htmlFor="nav-toggle" className="sm:hidden ml-auto cursor-pointer px-3 py-2">
-                <svg className="w-7 h-7 text-blue-900 dark:text-blue-50" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </label>
-              <ul className="hidden sm:flex flex-row gap-4 md:gap-6 text-base font-medium items-center justify-end flex-1">
+              <ul className="flex flex-row gap-4 md:gap-6 text-base font-medium items-center justify-end flex-1">
                 <li>
                   <a href="/about" className="block px-4 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] hover:text-blue-700 dark:hover:text-blue-100 transition font-semibold text-blue-900 dark:text-blue-50 flex items-center justify-center">
 
@@ -165,75 +159,9 @@ if (!mounted) {
                 </li>
               </ul>
             </nav>
-            {/* Mobile bottom nav */}
-            <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[hsl(40,80%,95%)]/90 dark:bg-[hsl(30,30%,15%)]/80 border-t border-blue-100 dark:border-[#222b3a] shadow-inner flex sm:hidden backdrop-blur-md backdrop-saturate-150">
-              <ul className="flex flex-row justify-between w-full px-2 py-1">
-                <li>
-                  <a href="/" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    {/* Home Icon */}
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3m10-11v10a1 1 0 01-1 1h-3m-6 0h6" />
-                    </svg>
-                    <span className="text-xs">Home</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/about" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" /></svg>
-                    <span className="text-xs">About</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/services" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 7v4a1 1 0 001 1h3v2a1 1 0 001 1h4a1 1 0 001-1v-2h3a1 1 0 001-1V7a1 1 0 00-1-1H4a1 1 0 00-1 1z" /></svg>
-                    <span className="text-xs">Services</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/events" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    <span className="text-xs">Events</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/resources" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 20h9" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m0 0H3m9 0a9 9 0 100-18 9 9 0 000 18z" /></svg>
-                    <span className="text-xs">Resources</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/media" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553 2.276A2 2 0 0121 14.118V17a2 2 0 01-2 2H5a2 2 0 01-2-2v-2.882a2 2 0 01.447-1.842L8 10m7 0V7a5 5 0 00-10 0v3m10 0a5 5 0 00-10 0" /></svg>
-                    <span className="text-xs">Media</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/announcements" className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100">
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 13V7a2 2 0 00-2-2H7a2 2 0 00-2 2v6m14 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6" /></svg>
-                    <span className="text-xs">News</span>
-                  </a>
-                </li>
-                <li>
-                  <button
-                    aria-label="Toggle dark mode"
-                    onClick={() => setDark((d) => !d)}
-                    className="flex flex-col items-center justify-center px-2 py-1 text-blue-900 dark:text-blue-50 hover:text-blue-700 dark:hover:text-blue-100"
-                    type="button"
-                  >
-                    <svg className="w-6 h-6 mb-0.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      {dark ? (
-                        // Moon icon for dark mode
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                      ) : (
-                        // Sun icon for light mode
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-8.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.95 7.07l-.71-.71M4.05 4.93l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z" />
-                      )}
-                    </svg>
-                    <span className="text-xs">{dark ? "Dark" : "Light"}</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            {}
+            {/* 
+            */}
           </header>
           <main className="min-h-[80vh] max-w-6xl mx-auto w-full px-2 sm:px-4 py-6 sm:py-8 pb-20 sm:pb-0">
             {children}
