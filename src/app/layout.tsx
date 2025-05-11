@@ -86,7 +86,7 @@ if (!mounted) {
         <SessionProvider>
           {/* Responsive Navbar */}
           <header className="w-full border-b border-blue-100 dark:border-[#222b3a] shadow-md backdrop-blur-md backdrop-saturate-150 py-4 bg-[hsl(40,80%,95%)] dark:bg-black/80">
-            <div className="flex flex-col items-center justify-center max-w-6xl mx-auto w-full bg-[hsl(40,80%,95%)] dark:bg-black/80 rounded-xl">
+            <div className="flex flex-col items-center justify-center max-w-6xl mx-auto w-full bg-[hsl(40,80%,95%)] dark:bg-black/80">
               {/* Logo */}
               <a href="/" className="block">
                 <div className="h-16 w-16 flex items-center justify-center rounded-full border-4 border-blue-200 dark:border-[#222b3a] bg-white dark:bg-[#181f2e] shadow-inner overflow-hidden group-hover:scale-105 transition mx-auto">
