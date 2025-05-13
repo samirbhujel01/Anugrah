@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://anugrahchurch.netlify.app/sitemap.xml
