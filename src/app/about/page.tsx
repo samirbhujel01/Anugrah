@@ -208,7 +208,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">New Member</div>
+      <div className="font-semibold text-blue-900 text-center">Soma Magar Subba</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
     </div> {/* Closing the youths grid container */}
