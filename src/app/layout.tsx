@@ -72,13 +72,13 @@ export default function RootLayout({
   }, [dark]);
 
   // Prevent hydration mismatch by not rendering until mounted
-if (!mounted) {
-  return (
-    <html>
-      <body />
-    </html>
-  );
-}
+  if (!mounted) {
+    return (
+      <html>
+        <body />
+      </html>
+    );
+  }
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${dark ? "dark" : ""}`}>
@@ -86,7 +86,7 @@ if (!mounted) {
         <SessionProvider>
           {/* Responsive Navbar */}
           <header className="w-full border-b border-blue-100 dark:border-[#222b3a] shadow-md backdrop-blur-md backdrop-saturate-150 py-4 bg-[hsl(40,80%,95%)] dark:bg-black/80">
-            <div className="flex flex-col items-center justify-center max-w-6xl mx-auto w-full bg-[hsl(40,80%,95%)] dark:bg-black/80">
+            <div className="flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
               {/* Logo */}
               <a href="/" className="block">
                 <div className="h-16 w-16 flex items-center justify-center rounded-full border-4 border-blue-200 dark:border-[#222b3a] bg-white dark:bg-[#181f2e] shadow-inner overflow-hidden group-hover:scale-105 transition mx-auto">
@@ -103,14 +103,14 @@ if (!mounted) {
                 <span className={`inline-block w-2 ${showCursor ? "animate-pulse" : "opacity-0"}`}>|</span>
               </span>
               {/* Navigation Links */}
-              <nav className="w-full mt-4 bg-[hsl(40,80%,95%)] dark:bg-black/80">
+              <nav className="w-full mt-4">
                 <ul className="flex flex-wrap justify-center gap-2 md:gap-6 text-base font-medium items-center">
-                  <li>
+                  <li className="flex items-center justify-center">
                     <a
                       href="/about"
-                      className="flex items-center justify-center px-2 py-2 rounded-full hover:bg-blue-50 dark:hover:bg-[#222b3a] transition font-semibold text-blue-800 dark:text-blue-200 bg-transparent"
+                      className="flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full font-semibold text-blue-800 dark:text-blue-200 bg-transparent hover:bg-blue-50 dark:hover:bg-[#222b3a] transition"
                     >
-                      <svg className="w-6 h-6 opacity-80 sm:opacity-100" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" /></svg>
                       <span className="hidden sm:inline ml-2">About</span>
                     </a>
                   </li>
@@ -163,30 +163,40 @@ if (!mounted) {
                     <button
                       aria-label="Toggle dark mode"
                       onClick={() => setDark((d) => !d)}
-                      className="ml-2 px-3 py-2 rounded-full border border-blue-200 dark:border-[#222b3a] bg-transparent text-blue-900 dark:text-blue-50 hover:bg-blue-50 dark:hover:bg-[#222b3a] transition flex items-center justify-center"
+                      className="px-3 py-2 rounded-full border border-blue-200 dark:border-[#222b3a] bg-transparent text-blue-900 dark:text-blue-50 hover:bg-blue-50 dark:hover:bg-[#222b3a] transition flex items-center justify-center"
                       type="button"
                     >
                       <span className="sm:hidden">{dark ? "🌙" : "☀️"}</span>
                       <span className="hidden sm:inline">{dark ? "Dark" : "Light"}</span>
                     </button>
                   </li>
-                  <li>
-                    <a
-                      href="/login"
-                      className="flex items-center justify-center px-2 py-2 sm:px-4 sm:py-2 rounded-full font-semibold text-blue-900 dark:text-blue-50 bg-transparent hover:bg-blue-50 dark:hover:bg-[#222b3a] transition"
-                    >
-                      <span className="hidden sm:inline">Login</span>
-                      <svg className="w-6 h-6 sm:hidden" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3m6-6v12m6-6a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </a>
-                  </li>
+                  <li className="flex items-center justify-center">
+  <a
+    href="/login"
+    className="flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full font-semibold text-blue-900 dark:text-blue-50 bg-transparent hover:bg-blue-100 dark:hover:bg-[#222b3a] transition"
+  >
+    <span className="hidden sm:inline">Login</span>
+    <svg
+     className="w-7 h-7 block mx-auto sm:hidden ml-2"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 18 26"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15 12H3m6-6v12m6-6a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </a>
+</li>
+
                 </ul>
               </nav>
             </div>
           </header>
-          <main className="min-h-[80vh] max-w-6xl mx-auto w-full px-2 sm:px-4 py-6 sm:py-8 pb-20 sm:pb-0">
-            {children}
-          </main>
-          <ClientBody dark={dark} setDark={setDark} />
+          {children}
         </SessionProvider>
       </body>
     </html>

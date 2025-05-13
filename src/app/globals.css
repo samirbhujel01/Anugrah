@@ -67,20 +67,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* globals.css */
-@media (max-width: 640px) {
-  nav ul {
-    transition: max-height 0.3s;
-    position: relative !important;
-    background: rgba(255, 255, 255, 0.97); /* or use dark color for dark mode */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    z-index: 50;
-  }
-  .dark nav ul {
-    background: rgba(16, 22, 36, 0.97); /* matches your dark navbar */
-  }
-  main {
-    margin-top: 0; /* or remove this rule entirely */
-  }
-}
