@@ -62,7 +62,159 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="mb-10 text-center">
+
+      {/* Youths Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 text-blue-800 text-center">Youths</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 mt-4">
+          {/* Youth 1 */}
+          <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+        <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+          <img
+            src="/uploads/752E510C-92D2-4402-94F9-CC344389BA8C.jpeg"
+            alt="Samir Bhujel"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="font-semibold text-blue-900 text-center">Samir Bhujel</div>
+        <div className="text-xs text-blue-700 text-center">Youth Leader</div>
+          </div>
+          {/* Youth 2 */}
+          <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+        <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+          <img
+            src="/uploads/youth2.jpeg"
+            alt="Tarpan Shankar"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="font-semibold text-blue-900 text-center">Tarpan Shankar</div>
+        <div className="text-xs text-blue-700 text-center">Youth Leader</div>
+          </div>
+          {/* Youth 3 */}
+          <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+        <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+          <img
+            src="/uploads/IMG_5133.jpeg"
+            alt="Sushil Gurung"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="font-semibold text-blue-900 text-center">Sushil Gurung</div>
+        <div className="text-xs text-blue-700 text-center">Member</div>
+
+          </div>
+          {/* Youth 4 */}
+          <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+        <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+          <img
+            src="/uploads/IMG_5134.jpeg"
+            alt="Sanjeev Pradhan"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="font-semibold text-blue-900 text-center">Sanjeev Pradhan</div>
+        <div className="text-xs text-blue-700 text-center">Member</div>
+          </div>
+       {/* Youth Members 5-12 */}
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Samjauta Magar.png"
+      alt="Samjauta Magar"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Samjauta Magar</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Roshan Darjee.jpeg"
+      alt="Roshan Darjee"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Roshan</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Rupesh GUrung.jpeg"
+      alt="Rupesh Gurung"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Rupesh Gurung</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Suman Bhujel.jpeg"
+      alt="Suman"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Suman</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Daniel Shankar.jpeg"
+      alt="Daniel Shankar"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Daniel</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Birman Tamang.jpeg"
+      alt="Birman Tamang"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Birman</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Anu Tamang.png"
+      alt="Anu Tamang"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">Anu</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+    <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
+      <div className="w-20 h-20 bg-blue-100 rounded-full mb-3 flex items-center justify-center overflow-hidden">
+        <img
+      src="/uploads/Soma Magar Subba.jpeg"
+      alt="Soma Magar Subba"
+      className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="font-semibold text-blue-900 text-center">New Member</div>
+      <div className="text-sm text-gray-600 text-center">Member</div>
+    </div>
+    </div> {/* Closing the youths grid container */}
+    </section>
+
+<section className="mb-10 text-center">
         <h2 className="text-xl font-bold mb-2 text-blue-800">Get Involved!</h2>
         <p className="mb-2 text-gray-700">
           Want to serve, join a group, or need prayer?{" "}
