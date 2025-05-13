@@ -137,7 +137,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">Roshan</div>
+      <div className="font-semibold text-blue-900 text-center">Roshan Darjee</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
 
@@ -161,7 +161,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">Suman</div>
+      <div className="font-semibold text-blue-900 text-center">Suman Bhujel</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
 
@@ -173,7 +173,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">Daniel</div>
+      <div className="font-semibold text-blue-900 text-center">Daniel Shankar</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
 
@@ -185,7 +185,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">Birman</div>
+      <div className="font-semibold text-blue-900 text-center">Birman Tamang</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
 
@@ -197,7 +197,7 @@ export default function AboutPage() {
       className="w-full h-full object-cover"
         />
       </div>
-      <div className="font-semibold text-blue-900 text-center">Anu</div>
+      <div className="font-semibold text-blue-900 text-center">Anu Tamang</div>
       <div className="text-sm text-gray-600 text-center">Member</div>
     </div>
     <div className="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center border border-blue-100 hover:shadow-xl transition">
