@@ -41,6 +41,9 @@ export default function RootLayout({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const stored = localStorage.getItem("anugrah-dark-mode");
+    if (stored === "true") setDark(true);
+    if (stored === "false") setDark(false);
     setMounted(true);
   }, []);
 
@@ -64,6 +67,7 @@ export default function RootLayout({
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("anugrah-dark-mode", dark ? "true" : "false");
     if (dark) {
       document.documentElement.classList.add("dark");
     } else {
@@ -177,7 +181,7 @@ export default function RootLayout({
   >
     <span className="hidden sm:inline">Login</span>
     <svg
-     className="w-7 h-7 block mx-auto sm:hidden ml-2"
+      className="w-7 h-7 block sm:hidden -ml-1"
       fill="none"
       stroke="currentColor"
       strokeWidth={2}
@@ -186,7 +190,7 @@ export default function RootLayout({
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15 12H3m6-6v12m6-6a9 9 0 11-18 0 9 9 0 0118 0z"
+        d="M15 12H3m8.5-6v12m8.3-6a9 9 0 11-18 0 9 9 0 0118 0z"
       />
     </svg>
   </a>
